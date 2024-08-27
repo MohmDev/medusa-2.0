@@ -16,8 +16,7 @@
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
-    "dev": "medusa develop",
-    "migrate": "medusa migrations run"
+    "dev": "medusa develop"
   },
   "dependencies": {
     "@medusajs/api-key": "preview",
