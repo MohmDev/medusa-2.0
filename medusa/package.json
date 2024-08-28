@@ -49,7 +49,9 @@
     "@medusajs/tax": "preview",
     "@medusajs/user": "preview",
     "@medusajs/workflow-engine-inmemory": "preview",
-    "express": "^4.17.2"
+    "@medusajs/workflow-engine-redis": "^0.0.5-preview-20240828090529",
+    "express": "^4.17.2",
+    "medusa-plugin-meilisearch": "^2.0.6-preview-20230528131710"
   },
   "devDependencies": {
     "@medusajs/medusa-cli": "preview",

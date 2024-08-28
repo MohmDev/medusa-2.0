@@ -17,16 +17,11 @@
     "jsx": "react-jsx",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "checkJs": false
+    "checkJs": true
   },
   "ts-node": {
     "swc": true
   },
-  "exclude": [
-    "**/__tests__",
-    "**/__fixtures__",
-    "node_modules",
-    "build",
-    ".cache"
-  ]
+  "include": ["medusa-config.*"],
+  "exclude": ["**/__tests__", "**/__fixtures__", "node_modules", "build", ".cache"]
 }
