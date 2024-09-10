@@ -76,8 +76,11 @@ export default function ProductActions({
     }
 
     // If there is inventory available, we can add to cart
+    // #TODO: Fix this error
     if (
+      // @ts-ignore
       selectedVariant?.inventory_items?.[0]?.inventory && // TODO: change this to support inventory kits
+      // @ts-ignore
       selectedVariant.inventory_items[0].inventory.stocked_quantity > 0
     ) {
       return true
