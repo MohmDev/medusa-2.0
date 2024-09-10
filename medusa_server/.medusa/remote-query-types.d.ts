@@ -332,123 +332,6 @@ export type PriceDetails = {
   max_quantity?: Maybe<Scalars['Float']['output']>;
 };
 
-export enum PromotionTypeValues {
-  Standard = 'standard',
-  Buyget = 'buyget'
-}
-
-export enum PromotionRuleOperatorValues {
-  Gt = 'gt',
-  Lt = 'lt',
-  Eq = 'eq',
-  Ne = 'ne',
-  In = 'in',
-  Lte = 'lte',
-  Gte = 'gte'
-}
-
-export enum CampaignBudgetTypeValues {
-  Spend = 'spend',
-  Usage = 'usage'
-}
-
-export enum ApplicationMethodTypeValues {
-  Fixed = 'fixed',
-  Percentage = 'percentage'
-}
-
-export enum ApplicationMethodTargetTypeValues {
-  Order = 'order',
-  ShippingMethods = 'shipping_methods',
-  Items = 'items'
-}
-
-export enum ApplicationMethodAllocationValues {
-  Each = 'each',
-  Across = 'across'
-}
-
-export type Promotion = {
-  __typename?: 'Promotion';
-  id: Scalars['ID']['output'];
-  code?: Maybe<Scalars['String']['output']>;
-  type?: Maybe<PromotionTypeValues>;
-  is_automatic?: Maybe<Scalars['Boolean']['output']>;
-  application_method?: Maybe<ApplicationMethod>;
-  rules?: Maybe<Array<Maybe<PromotionRule>>>;
-  campaign_id?: Maybe<Scalars['String']['output']>;
-  campaign?: Maybe<Campaign>;
-  order_link?: Maybe<LinkOrderPromotion>;
-};
-
-export type PromotionRule = {
-  __typename?: 'PromotionRule';
-  id: Scalars['ID']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  attribute?: Maybe<Scalars['String']['output']>;
-  operator?: Maybe<PromotionRuleOperatorValues>;
-  values: Array<PromotionRuleValue>;
-};
-
-export type PromotionRuleValue = {
-  __typename?: 'PromotionRuleValue';
-  id: Scalars['ID']['output'];
-  value?: Maybe<Scalars['String']['output']>;
-};
-
-export type Campaign = {
-  __typename?: 'Campaign';
-  id: Scalars['ID']['output'];
-  name?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
-  campaign_identifier?: Maybe<Scalars['String']['output']>;
-  starts_at?: Maybe<Scalars['DateTime']['output']>;
-  ends_at?: Maybe<Scalars['DateTime']['output']>;
-  budget?: Maybe<CampaignBudget>;
-  promotions?: Maybe<Array<Maybe<Promotion>>>;
-};
-
-export type CampaignBudget = {
-  __typename?: 'CampaignBudget';
-  id: Scalars['ID']['output'];
-  type?: Maybe<CampaignBudgetTypeValues>;
-  limit?: Maybe<Scalars['Int']['output']>;
-  used?: Maybe<Scalars['Int']['output']>;
-  currency_code?: Maybe<Scalars['String']['output']>;
-};
-
-export type ApplicationMethod = {
-  __typename?: 'ApplicationMethod';
-  id: Scalars['ID']['output'];
-  type?: Maybe<ApplicationMethodTypeValues>;
-  target_type?: Maybe<ApplicationMethodTargetTypeValues>;
-  allocation?: Maybe<ApplicationMethodAllocationValues>;
-  value?: Maybe<Scalars['Float']['output']>;
-  currency_code?: Maybe<Scalars['String']['output']>;
-  max_quantity?: Maybe<Scalars['Int']['output']>;
-  buy_rules_min_quantity?: Maybe<Scalars['Int']['output']>;
-  apply_to_quantity?: Maybe<Scalars['Int']['output']>;
-  promotion?: Maybe<Promotion>;
-  target_rules?: Maybe<Array<Maybe<PromotionRule>>>;
-  buy_rules?: Maybe<Array<Maybe<PromotionRule>>>;
-};
-
-export type SalesChannel = {
-  __typename?: 'SalesChannel';
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  description?: Maybe<Scalars['String']['output']>;
-  is_disabled: Scalars['Boolean']['output'];
-  created_at: Scalars['DateTime']['output'];
-  metadata?: Maybe<Scalars['JSON']['output']>;
-  updated_at: Scalars['DateTime']['output'];
-  deleted_at?: Maybe<Scalars['DateTime']['output']>;
-  products_link?: Maybe<Array<Maybe<LinkProductSalesChannel>>>;
-  api_keys_link?: Maybe<Array<Maybe<LinkPublishableApiKeySalesChannel>>>;
-  locations_link?: Maybe<Array<Maybe<LinkSalesChannelStockLocation>>>;
-  stock_locations?: Maybe<Array<Maybe<StockLocation>>>;
-};
-
 export enum ChangeActionType {
   CancelReturnItem = 'CANCEL_RETURN_ITEM',
   FulfillItem = 'FULFILL_ITEM',
@@ -1051,33 +934,121 @@ export type OrderTransaction = {
   updated_at: Scalars['DateTime']['output'];
 };
 
-export type Region = {
-  __typename?: 'Region';
+export enum PromotionTypeValues {
+  Standard = 'standard',
+  Buyget = 'buyget'
+}
+
+export enum PromotionRuleOperatorValues {
+  Gt = 'gt',
+  Lt = 'lt',
+  Eq = 'eq',
+  Ne = 'ne',
+  In = 'in',
+  Lte = 'lte',
+  Gte = 'gte'
+}
+
+export enum CampaignBudgetTypeValues {
+  Spend = 'spend',
+  Usage = 'usage'
+}
+
+export enum ApplicationMethodTypeValues {
+  Fixed = 'fixed',
+  Percentage = 'percentage'
+}
+
+export enum ApplicationMethodTargetTypeValues {
+  Order = 'order',
+  ShippingMethods = 'shipping_methods',
+  Items = 'items'
+}
+
+export enum ApplicationMethodAllocationValues {
+  Each = 'each',
+  Across = 'across'
+}
+
+export type Promotion = {
+  __typename?: 'Promotion';
   id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  currency_code: Scalars['String']['output'];
-  automatic_taxes: Scalars['Boolean']['output'];
-  countries: Array<Maybe<Country>>;
-  metadata?: Maybe<Scalars['JSON']['output']>;
-  created_at: Scalars['DateTime']['output'];
-  updated_at: Scalars['DateTime']['output'];
-  deleted_at?: Maybe<Scalars['DateTime']['output']>;
-  payment_provider_link?: Maybe<Array<Maybe<LinkRegionPaymentProvider>>>;
-  payment_providers?: Maybe<Array<Maybe<PaymentProvider>>>;
+  code?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<PromotionTypeValues>;
+  is_automatic?: Maybe<Scalars['Boolean']['output']>;
+  application_method?: Maybe<ApplicationMethod>;
+  rules?: Maybe<Array<Maybe<PromotionRule>>>;
+  campaign_id?: Maybe<Scalars['String']['output']>;
+  campaign?: Maybe<Campaign>;
+  order_link?: Maybe<LinkOrderPromotion>;
 };
 
-export type Country = {
-  __typename?: 'Country';
-  iso_2: Scalars['ID']['output'];
-  iso_3: Scalars['String']['output'];
-  num_code: Scalars['String']['output'];
+export type PromotionRule = {
+  __typename?: 'PromotionRule';
+  id: Scalars['ID']['output'];
+  description?: Maybe<Scalars['String']['output']>;
+  attribute?: Maybe<Scalars['String']['output']>;
+  operator?: Maybe<PromotionRuleOperatorValues>;
+  values: Array<PromotionRuleValue>;
+};
+
+export type PromotionRuleValue = {
+  __typename?: 'PromotionRuleValue';
+  id: Scalars['ID']['output'];
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type Campaign = {
+  __typename?: 'Campaign';
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  campaign_identifier?: Maybe<Scalars['String']['output']>;
+  starts_at?: Maybe<Scalars['DateTime']['output']>;
+  ends_at?: Maybe<Scalars['DateTime']['output']>;
+  budget?: Maybe<CampaignBudget>;
+  promotions?: Maybe<Array<Maybe<Promotion>>>;
+};
+
+export type CampaignBudget = {
+  __typename?: 'CampaignBudget';
+  id: Scalars['ID']['output'];
+  type?: Maybe<CampaignBudgetTypeValues>;
+  limit?: Maybe<Scalars['Int']['output']>;
+  used?: Maybe<Scalars['Int']['output']>;
+  currency_code?: Maybe<Scalars['String']['output']>;
+};
+
+export type ApplicationMethod = {
+  __typename?: 'ApplicationMethod';
+  id: Scalars['ID']['output'];
+  type?: Maybe<ApplicationMethodTypeValues>;
+  target_type?: Maybe<ApplicationMethodTargetTypeValues>;
+  allocation?: Maybe<ApplicationMethodAllocationValues>;
+  value?: Maybe<Scalars['Float']['output']>;
+  currency_code?: Maybe<Scalars['String']['output']>;
+  max_quantity?: Maybe<Scalars['Int']['output']>;
+  buy_rules_min_quantity?: Maybe<Scalars['Int']['output']>;
+  apply_to_quantity?: Maybe<Scalars['Int']['output']>;
+  promotion?: Maybe<Promotion>;
+  target_rules?: Maybe<Array<Maybe<PromotionRule>>>;
+  buy_rules?: Maybe<Array<Maybe<PromotionRule>>>;
+};
+
+export type SalesChannel = {
+  __typename?: 'SalesChannel';
+  id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  display_name: Scalars['String']['output'];
-  region?: Maybe<Array<Maybe<Region>>>;
-  metadata?: Maybe<Scalars['JSON']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  is_disabled: Scalars['Boolean']['output'];
   created_at: Scalars['DateTime']['output'];
+  metadata?: Maybe<Scalars['JSON']['output']>;
   updated_at: Scalars['DateTime']['output'];
   deleted_at?: Maybe<Scalars['DateTime']['output']>;
+  products_link?: Maybe<Array<Maybe<LinkProductSalesChannel>>>;
+  api_keys_link?: Maybe<Array<Maybe<LinkPublishableApiKeySalesChannel>>>;
+  locations_link?: Maybe<Array<Maybe<LinkSalesChannelStockLocation>>>;
+  stock_locations?: Maybe<Array<Maybe<StockLocation>>>;
 };
 
 export enum PaymentCollectionStatus {
@@ -1195,6 +1166,35 @@ export type RefundReason = {
   updated_at: Scalars['DateTime']['output'];
 };
 
+export type Region = {
+  __typename?: 'Region';
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+  currency_code: Scalars['String']['output'];
+  automatic_taxes: Scalars['Boolean']['output'];
+  countries: Array<Maybe<Country>>;
+  metadata?: Maybe<Scalars['JSON']['output']>;
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at?: Maybe<Scalars['DateTime']['output']>;
+  payment_provider_link?: Maybe<Array<Maybe<LinkRegionPaymentProvider>>>;
+  payment_providers?: Maybe<Array<Maybe<PaymentProvider>>>;
+};
+
+export type Country = {
+  __typename?: 'Country';
+  iso_2: Scalars['ID']['output'];
+  iso_3: Scalars['String']['output'];
+  num_code: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  display_name: Scalars['String']['output'];
+  region?: Maybe<Array<Maybe<Region>>>;
+  metadata?: Maybe<Scalars['JSON']['output']>;
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at?: Maybe<Scalars['DateTime']['output']>;
+};
+
 export type Currency = {
   __typename?: 'Currency';
   code: Scalars['ID']['output'];
@@ -1204,32 +1204,6 @@ export type Currency = {
   decimal_digits: Scalars['Int']['output'];
   rounding: Scalars['String']['output'];
   raw_rounding: Scalars['JSON']['output'];
-  created_at: Scalars['DateTime']['output'];
-  updated_at: Scalars['DateTime']['output'];
-  deleted_at?: Maybe<Scalars['DateTime']['output']>;
-};
-
-export enum NotificationStatusEnum {
-  Pending = 'PENDING',
-  Success = 'SUCCESS',
-  Failure = 'FAILURE'
-}
-
-export type Notification = {
-  __typename?: 'Notification';
-  id: Scalars['ID']['output'];
-  to: Scalars['String']['output'];
-  channel: Scalars['String']['output'];
-  template: Scalars['String']['output'];
-  data?: Maybe<Scalars['JSON']['output']>;
-  trigger_type?: Maybe<Scalars['String']['output']>;
-  resource_id?: Maybe<Scalars['String']['output']>;
-  resource_type?: Maybe<Scalars['String']['output']>;
-  receiver_id?: Maybe<Scalars['String']['output']>;
-  original_notification_id?: Maybe<Scalars['String']['output']>;
-  idempotency_key?: Maybe<Scalars['String']['output']>;
-  external_id?: Maybe<Scalars['String']['output']>;
-  status: NotificationStatusEnum;
   created_at: Scalars['DateTime']['output'];
   updated_at: Scalars['DateTime']['output'];
   deleted_at?: Maybe<Scalars['DateTime']['output']>;
@@ -1417,6 +1391,32 @@ export type ShippingProfile = {
   deleted_at?: Maybe<Scalars['DateTime']['output']>;
 };
 
+export enum NotificationStatusEnum {
+  Pending = 'PENDING',
+  Success = 'SUCCESS',
+  Failure = 'FAILURE'
+}
+
+export type Notification = {
+  __typename?: 'Notification';
+  id: Scalars['ID']['output'];
+  to: Scalars['String']['output'];
+  channel: Scalars['String']['output'];
+  template: Scalars['String']['output'];
+  data?: Maybe<Scalars['JSON']['output']>;
+  trigger_type?: Maybe<Scalars['String']['output']>;
+  resource_id?: Maybe<Scalars['String']['output']>;
+  resource_type?: Maybe<Scalars['String']['output']>;
+  receiver_id?: Maybe<Scalars['String']['output']>;
+  original_notification_id?: Maybe<Scalars['String']['output']>;
+  idempotency_key?: Maybe<Scalars['String']['output']>;
+  external_id?: Maybe<Scalars['String']['output']>;
+  status: NotificationStatusEnum;
+  created_at: Scalars['DateTime']['output'];
+  updated_at: Scalars['DateTime']['output'];
+  deleted_at?: Maybe<Scalars['DateTime']['output']>;
+};
+
 export type LinkCartPaymentCollection = {
   __typename?: 'LinkCartPaymentCollection';
   cart_id: Scalars['String']['output'];
@@ -1591,8 +1591,6 @@ declare module '@medusajs/types' {
   interface RemoteQueryEntryPoints {
     file: any
     files: any
-    workflow_execution: any
-    workflow_executions: any
     stock_location_address: StockLocationAddress
     stock_location_addresses: StockLocationAddress
     stock_location: StockLocation
@@ -1632,6 +1630,32 @@ declare module '@medusajs/types' {
     prices: any
     price_preference: any
     price_preferences: any
+    api_key: any
+    api_keys: any
+    store: any
+    stores: any
+    store_currency: any
+    store_currencies: any
+    order: Order
+    orders: Order
+    order_address: OrderAddress
+    order_addresses: OrderAddress
+    order_change: OrderChange
+    order_changes: OrderChange
+    order_claim: OrderClaim
+    order_claims: OrderClaim
+    order_exchange: OrderExchange
+    order_exchanges: OrderExchange
+    order_line_item: OrderLineItem
+    order_line_items: OrderLineItem
+    order_shipping_method: OrderShippingMethod
+    order_shipping_methods: OrderShippingMethod
+    order_transaction: OrderTransaction
+    order_transactions: OrderTransaction
+    return: Return
+    returns: Return
+    return_reason: any
+    return_reasons: any
     promotion: Promotion
     promotions: Promotion
     campaign: Campaign
@@ -1664,38 +1688,10 @@ declare module '@medusajs/types' {
     shipping_method_adjustments: any
     shipping_method_tax_line: any
     shipping_method_tax_lines: any
-    order: Order
-    orders: Order
-    order_address: OrderAddress
-    order_addresses: OrderAddress
-    order_change: OrderChange
-    order_changes: OrderChange
-    order_claim: OrderClaim
-    order_claims: OrderClaim
-    order_exchange: OrderExchange
-    order_exchanges: OrderExchange
-    order_line_item: OrderLineItem
-    order_line_items: OrderLineItem
-    order_shipping_method: OrderShippingMethod
-    order_shipping_methods: OrderShippingMethod
-    order_transaction: OrderTransaction
-    order_transactions: OrderTransaction
-    return: Return
-    returns: Return
-    return_reason: any
-    return_reasons: any
-    auth_identity: any
-    auth_identities: any
-    provider_identity: any
-    provider_identities: any
     user: any
     users: any
     invite: any
     invites: any
-    store: any
-    stores: any
-    store_currency: any
-    store_currencies: any
     tax_rate: any
     tax_rates: any
     tax_region: any
@@ -1704,12 +1700,10 @@ declare module '@medusajs/types' {
     tax_rate_rules: any
     tax_provider: any
     tax_providers: any
-    api_key: any
-    api_keys: any
-    region: Region
-    regions: Region
-    country: Country
-    countries: Country
+    auth_identity: any
+    auth_identities: any
+    provider_identity: any
+    provider_identities: any
     payment: Payment
     payments: Payment
     payment_collection: PaymentCollection
@@ -1720,10 +1714,12 @@ declare module '@medusajs/types' {
     payment_sessions: PaymentSession
     refund_reason: RefundReason
     refund_reasons: RefundReason
+    region: Region
+    regions: Region
+    country: Country
+    countries: Country
     currency: Currency
     currencies: Currency
-    notification: Notification
-    notifications: Notification
     fulfillment_address: any
     fulfillment_addresses: any
     fulfillment_item: FulfillmentItem
@@ -1748,6 +1744,10 @@ declare module '@medusajs/types' {
     shipping_options: ShippingOption
     shipping_profile: ShippingProfile
     shipping_profiles: ShippingProfile
+    notification: Notification
+    notifications: Notification
+    workflow_execution: any
+    workflow_executions: any
     cart_payment_collection: LinkCartPaymentCollection
     cart_payment_collections: LinkCartPaymentCollection
     cart_promotion: LinkCartPromotion

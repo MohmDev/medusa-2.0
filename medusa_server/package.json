@@ -13,6 +13,7 @@
     "medusa"
   ],
   "scripts": {
+    "migrate": "medusa db:migrate",
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
@@ -27,10 +28,12 @@
     "@medusajs/auth": "preview",
     "@medusajs/auth-emailpass": "preview",
     "@medusajs/cache-inmemory": "preview",
+    "@medusajs/cache-redis": "preview",
     "@medusajs/cart": "preview",
     "@medusajs/currency": "preview",
     "@medusajs/customer": "preview",
     "@medusajs/event-bus-local": "preview",
+    "@medusajs/event-bus-redis": "preview",
     "@medusajs/file": "preview",
     "@medusajs/file-local-next": "preview",
     "@medusajs/fulfillment": "preview",
@@ -52,6 +55,7 @@
     "@medusajs/tax": "preview",
     "@medusajs/user": "preview",
     "@medusajs/workflow-engine-inmemory": "preview",
+    "@medusajs/workflow-engine-redis": "preview",
     "express": "^4.17.2"
   },
   "devDependencies": {
