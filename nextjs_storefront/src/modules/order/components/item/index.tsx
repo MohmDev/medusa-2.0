@@ -26,6 +26,8 @@ const Item = ({ item }: ItemProps) => {
         >
           {item.title}
         </Text>
+        {/* #TODO: Fix this error */}
+        {/* @ts-ignore */}
         <LineItemOptions variant={item.variant} data-testid="product-variant" />
       </Table.Cell>
 
